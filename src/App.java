@@ -1,20 +1,30 @@
+import java.io.Console;
+
+import Decoding.Decoder;
+import Decoding.DecoderImpl;
 import Encoding.Encoder;
 import Encoding.EncoderImpl;
 
 public class App {
     public static void main(String[] args) throws Exception {
-        
-        // 1. Create the Reference table in hashmap
-        // 2. Create encoder logic
-        // 3. Create decoder logic
 
         Encoder encoder = new EncoderImpl();
+        Decoder decoder = new DecoderImpl();
 
-        String plainText = "HELLO WORLD";
+        System.out.print("Your text to be encoded: ");
+        Console console = System.console();
+        String plainText = console.readLine();
 
-        String result = encoder.encode(plainText);
+        String result, decodedString;
 
-        System.out.println("result: " + result + "\n");
+        for (int i=0; i<10; i++) {
+            result = encoder.encode(plainText);
+            System.out.println("result: " + result );
+
+            decodedString = decoder.decode(result);
+            System.out.println("decodedString: " + decodedString + "\n");
+        }
+
 
 
     }
